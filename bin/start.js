@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-console.log('Start script');
+console.log('Start script', Date.now());
