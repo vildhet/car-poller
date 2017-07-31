@@ -1,5 +1,6 @@
 'use strict';
 
-const telegram = require('../src/telegram');
+const TelegramBot = require('../src/telegramBot');
 
-telegram.serve();
+let bot = new TelegramBot();
+bot.serve();
