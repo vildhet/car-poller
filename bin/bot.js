@@ -2,4 +2,4 @@
 
 const telegram = require('../src/telegram');
 
-telegram();
+telegram.serve();

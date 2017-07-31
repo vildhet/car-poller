@@ -2,18 +2,20 @@
 
 const Telegraf = require('telegraf');
 
-function init() {
-    const app = new Telegraf('223004546:AAHD-wmJvRs3fFgrlnj1S71hHkhLmD1hPVM');
+function serve() {
+    let bot = new Telegraf(process.env.TOKEN);
 
-    app.command('start', ({ from, reply }) => {
-    console.log('start', from);
-    return reply('Welcome!');
+    bot.command('start', ({ from, reply }) => {
+        console.log('start', from);
+        return reply('Welcome!');
     });
-    app.hears('hi', (ctx) => ctx.reply('Hey there!'));
-    app.on('sticker', (ctx) => ctx.reply('👍'));
 
-    app.startPolling();
+    bot.on('text', ({ reply }) => reply('Hey there!'));
 
+    console.log('Listening on port ' + process.env.PORT);
+    bot.startWebhook('/telegram-bot', null, process.env.PORT);
 }
 
-module.exports = init;
+module.exports = {
+    serve: serve
+};
