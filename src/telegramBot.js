@@ -12,7 +12,7 @@ class TelegramBot {
     serve() {
         this.bot.command('start', ({ from, reply }) => {
             console.log('start', from);
-            return reply('Welcome!');
+            return reply(`Welcome, ${from.username}!`);
         });
 
         const secretUrl = Math.random().toString(36).slice(2);
