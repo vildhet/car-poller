@@ -4,6 +4,7 @@
 const async = require('async');
 const Telegraf = require('telegraf');
 const UserController = require('./userController');
+const AdCollector = require('./adCollector');
 const env = require('./env');
 
 
@@ -11,6 +12,12 @@ class TelegramBot {
     constructor() {
         this.bot = new Telegraf(env.token);
         this.userController = new UserController();
+        this.adCollector = new AdCollector();
+    }
+
+    checkNewAds(next) {
+        let ads = this.adCollector.fetchNew();
+        this.sendToAll(ads, next);
     }
 
     sendToAll(message, next) {
@@ -52,11 +59,6 @@ class TelegramBot {
             console.log(`Unsubscribed user ${from.username}[${from.id}]`);
             return reply('Unsubscribed');
         });
-
-        // this.bot.command('sleep', ({ from, reply}) => {
-        //     console.log('Exiting by sleep command');
-        //     process.exit();
-        // });
 
     }
 

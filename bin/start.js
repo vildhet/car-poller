@@ -5,6 +5,6 @@ const redis = require('../src/redis');
 
 const bot = new TelegramBot();
 
-bot.sendToAll('Holy shit', () => {
+bot.checkNewAds(() => {
     redis.quit();
 });
