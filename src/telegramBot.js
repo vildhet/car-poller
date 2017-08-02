@@ -53,6 +53,11 @@ class TelegramBot {
             return reply('Unsubscribed');
         });
 
+        this.bot.command('sleep', ({ from, reply}) => {
+            console.log('Exiting by sleep command');
+            process.exit();
+        });
+
     }
 
     _startWebhook() {
