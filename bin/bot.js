@@ -2,5 +2,5 @@
 
 const TelegramBot = require('../src/telegramBot');
 
-let bot = new TelegramBot();
+const bot = new TelegramBot();
 bot.serve();

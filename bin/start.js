@@ -1,3 +1,10 @@
 #!/usr/bin/env node
 
-console.log('Start script', Date.now());
+const TelegramBot = require('../src/telegramBot');
+const redis = require('../src/redis');
+
+const bot = new TelegramBot();
+
+bot.sendToAll('Holy shit', () => {
+    redis.quit();
+});
