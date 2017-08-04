@@ -13,5 +13,8 @@
     "redis": "^2.7.1",
     "request": "^2.81.0",
     "telegraf": "^3.9.0"
+  },
+  "engines": {
+    "node": "8.2.x"
   }
 }
