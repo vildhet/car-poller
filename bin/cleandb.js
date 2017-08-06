@@ -1,7 +1,11 @@
 'use strict';
 
+const async = require('async');
 const redis = require('../lib/redis');
 
-redis.del('onliner', () => {
+async.each(['avby', 'onliner'], (key, next) => {
+    redis.del(key, next);
+}, (err) => {
     redis.quit();
 });
+
